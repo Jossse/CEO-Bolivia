@@ -10,6 +10,10 @@ SELECT COLUMN_NAME,'=@'+COLUMN_NAME+','
 FROM Information_Schema.Columns
 WHERE TABLE_NAME = 'socios'
 
+SELECT 'AND (@'+COLUMN_NAME+' IS NULL OR ','@'+COLUMN_NAME,'='+COLUMN_NAME+')'
+FROM Information_Schema.Columns
+WHERE TABLE_NAME = 'Empleados'
+
 --ctrl+k+x snipplets
 --F7 rowcount
 --Ctrl+shift+m templates CTRL+ALT+T
@@ -27,3 +31,9 @@ WHERE TABLE_NAME = 'socios'
 -- (6) WITH {CUBE | ROLLUP}
 -- (7) HAVING <condições having>
 --(10) ORDER BY <lista de campos>
+
+UPDATE       Consumos
+SET                Cancelado = 0
+FROM            Consumos INNER JOIN
+                         Periodos ON Consumos.IdPeriodo = Periodos.IdPeriodo
+WHERE        (Periodos.IdPeriodo = N'sep21')

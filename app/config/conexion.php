@@ -17,6 +17,7 @@ class conexion{
 
     function connect()
     {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $con = new mysqli($this->host, $this->usuario, $this->clave, $this->db);
         return $con;
     }
@@ -30,20 +31,5 @@ class conexion{
         $resp = $this->connect()->query($sql);
         return ($resp);
     }
-    /*protected $dbh;
-    protected function connect(){
-        try {
-            $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=sisrecocoap","root","");
-
-            return $conectar;
-        } catch (Exception $e) {
-            print "¡Error BD!: " . $e->getMessage() . "<br/>";
-            die();
-        }
-    }
-
-    public function set_names(){
-        return $this->dbh->query("SET NAMES 'utf8'");
-    }*/
 }
 ?>

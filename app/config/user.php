@@ -9,7 +9,7 @@ class User extends conexion
 
     public function getUser($username, $password)
     {
-        $sql = "SELECT * FROM empleados WHERE Apellidos_Nombres = '$username' AND Password = '$password'";
+        $sql = "SELECT * FROM empleados WHERE Apellidos_Nombres = '$username' AND Clave = '$password'";
 
         $result = $this->connect()->query($sql);
 

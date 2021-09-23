@@ -2,26 +2,24 @@
 
 require("../config/conexion.php");
 
-class mdl_empleado
+class mdl_socio
 {
+    private $Cuenta;
+    private $ApellidosNombres;
     private $CI;
-    private $Apellidos_Nombres;
     private $Direccion;
     private $Celular;
-    private $Cargo;
-    private $Clave;
     private $FechaRegistro;
     private $Activo;
     public $con;
 
     function __construct()
     {
+        $this->Cuenta = "";
+        $this->ApellidosNombres = "";
         $this->CI = "";
-        $this->Apellidos_Nombres = "";
         $this->Direccion = "";
         $this->Celular = "";
-        $this->Cargo = "";
-        $this->Clave = "";
         $this->FechaRegistro = "";
         $this->Activo = "1";
         $this->con = new conexion();
@@ -40,7 +38,7 @@ class mdl_empleado
 
     public function listar()
     {
-        $sql = "select * from empleados where Activo=1";
+        $sql = "select * from socios where Activo=1";
         $res = $this->con->consulta_valor($sql);
         return ($res);
 
@@ -49,20 +47,19 @@ class mdl_empleado
     public function eliminar()
     {
 
-        $sql = "update empleados set Activo=0 where CI='$this->CI'";
+        $sql = "update socios set Activo=0 where CI='$this->CI'";
         $this->con->consulta_simple($sql);
     }
 
     public function insertar()
     {
-        $sql = "insert into empleados(CI, Apellidos_Nombres, Direccion, Celular , Cargo, Clave, FechaRegistro,Activo) 
+        $sql = "insert into socios(Cuenta,ApellidosNombres, CI, Direccion, Celular, FechaRegistro,Activo) 
 		      VALUES(
+		        '$this->Cuenta',
+		      	'$this->ApellidosNombres', 
 		      	'$this->CI',
-		      	'$this->Apellidos_Nombres', 
 		      	'$this->Direccion', 
 		      	'$this->Celular', 
-		      	'$this->Cargo', 
-		      	'$this->Clave', 
 		      	'$this->FechaRegistro', 
 		      	'$this->Activo')";
         $this->con->consulta_simple($sql);
@@ -70,20 +67,20 @@ class mdl_empleado
 
     public function buscar()
     {
-        $sql = "select * from empleados where CI='$this->CI'";
+        $sql = "select * from socios where CI='$this->CI'";
         $res = $this->con->consulta_valor($sql);
         return ($res);
     }
 
     public function modificar()
     {
-        $sql = "update empleados set 
-                Apellidos_Nombres='$this->Apellidos_Nombres',
+        $sql = "update socios set 
+                ApellidosNombres='$this->ApellidosNombres',
                 Direccion='$this->Direccion',
                 Celular='$this->Celular',
-                Cargo='$this->Cargo',
                 FechaRegistro='$this->FechaRegistro' 
                 where CI='$this->CI'";
         $this->con->consulta_simple($sql);
     }
 }
+

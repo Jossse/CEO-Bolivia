@@ -17,6 +17,7 @@ if (isset($_SESSION['usuario'])){
     <link rel="stylesheet" href="../../public/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="../../public/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../../public/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 
 </head>
 
@@ -88,6 +89,7 @@ $resp=$obj_ctrl->listar();
                                         <th style="width: 18%;">Direcci&oacute;n</th>
                                         <th style="width: 10%;">Celular</th>
                                         <th style="width: 10%;">Cargo</th>
+                                        <th style="display: none";"width: 10%;">Clave</th>
                                         <th style="width: 10%;">Fecha de Registro</th>
                                         <th class="text-center" style="width: 10%;"></th>
                                         <th class="text-center" style="width: 10%;"></th>
@@ -101,22 +103,24 @@ $resp=$obj_ctrl->listar();
                                             $Direccion = $row["Direccion"];
                                             $Celular = $row["Celular"];
                                             $Cargo = $row["Cargo"];
+                                            $Clave = $row["Clave"];
                                             $FechaRegistro = $row["FechaRegistro"];
 
                                             echo "<tr>";
-                                            echo "<td> " . $CI . "</td>";
-                                            echo "<td> " . $Apellidos_Nombres . "</td>";
-                                            echo "<td> " . $Direccion . "</td>";
-                                            echo "<td> " . $Celular . "</td>";
-                                            echo "<td> " . $Cargo . "</td>";
-                                            echo "<td> " . $FechaRegistro . "</td>";
+                                            echo "<td>" . $CI . "</td>";
+                                            echo "<td>" . $Apellidos_Nombres . "</td>";
+                                            echo "<td>" . $Direccion . "</td>";
+                                            echo "<td>" . $Celular . "</td>";
+                                            echo "<td>" . $Cargo . "</td>";
+                                            echo "<td style='display: none'>" . $Clave . "</td>";
+                                            echo "<td>" . $FechaRegistro . "</td>";
 
                                             echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_empleado.php?var=" . $CI . "'>
                                               <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                             </a></td>";
-                                            echo "<td><a  href='vst_modificar_clientes.php?codigo=" . $CI . "' class='btn btn-default' aria-label='Left Align'>
+                                            echo "<td><button type='button'  class='btn btn-default'  id='btnModificar'  aria-label='Left Align'>
                                               <span class='fa fa-pencil' aria-hidden='true'></span>
-                                            </a></td>";
+                                            </button></td>";
 
                                             echo "</tr>";
                                         }
@@ -136,12 +140,9 @@ $resp=$obj_ctrl->listar();
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="titulo_empleado"></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" id="ci" name="ci">
+
                                     <div class="form-group row">
                                         <label class="col-12" for="CI">CI</label>
                                         <div class="col-md-12">
@@ -173,22 +174,22 @@ $resp=$obj_ctrl->listar();
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-12" for="Password">Password</label>
+                                        <label class="col-12"  for="Clave">Clave</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="Password" name="Password" placeholder="" required>
+                                            <input type="text" class="form-control" id="Clave" name="Clave" placeholder="" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-12" for="FechaRegistro">Fecha de Registro</label>
                                         <div class="col-md-12">
-                                            <input type="date" class="form-control" id="FechaRegistro" name="FechaRegistro"  required>
+                                            <input type="date" class="form-control" id="FechaRegistro" name="FechaRegistro" >
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="btn" id="#" value="add" class="btn btn-primary">Guardar</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" name="registro" id="btn" class="btn btn-primary">Enviar</button>
+                                    <button type="button" class="btn btn-secondary" id="cerrarModal" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </form>
@@ -203,8 +204,10 @@ $resp=$obj_ctrl->listar();
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script type="text/javascript" src="../../public/js/jquery.js"></script>
+    <script src="../../public/js/plugins/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     <script src="../../public/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../public/js/theme.js"></script>
+    <script type="text/javascript" src="../../public/js/moment.js"></script>
     <script src="../../public/js/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../../public/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

@@ -97,7 +97,9 @@ $resp=$obj_ctrl->listar();
                                     </thead>
                                     <tbody>
 <?php
-                                        while ($row=mysqli_fetch_array($resp)) {
+                                        $rows = $resp->fetchAll();
+                                        foreach ($rows as $row ) {
+                                        
                                             $CI = $row["CI"];
                                             $Apellidos_Nombres = $row["Apellidos_Nombres"];
                                             $Direccion = $row["Direccion"];

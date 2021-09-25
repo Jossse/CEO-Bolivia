@@ -25,7 +25,7 @@ class ctrl_socios{
     }
 
     public function agregar_socio(){
-        $this->obj->set("Cuenta",$_POST["Cuenta"]);
+        
         $this->obj->set("ApellidosNombres",$_POST["ApellidosNombres"]);
         $this->obj->set("CI",$_POST["CI"]);
         $this->obj->set("Direccion",$_POST["Direccion"]);

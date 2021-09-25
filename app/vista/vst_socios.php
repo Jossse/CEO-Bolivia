@@ -96,7 +96,9 @@ $resp=$obj_ctrl->listar();
                                 </thead>
                                 <tbody>
                                 <?php
-                                while ($row=mysqli_fetch_array($resp)) {
+                                 $rows = $resp->fetchAll();
+                                 foreach ($rows as $row ) {
+                                
                                     $Cuenta = $row["Cuenta"];
                                     $Apellidos_Nombres = $row["ApellidosNombres"];
                                     $CI = $row["CI"];
@@ -140,12 +142,7 @@ $resp=$obj_ctrl->listar();
                             </div>
                             <div class="modal-body">
 
-                                <div class="form-group row">
-                                    <label class="col-12" for="Cuenta">Cuenta</label>
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" id="Cuenta" name="Cuenta" placeholder="" required>
-                                    </div>
-                                </div>
+
                                 <div class="form-group row">
                                     <label class="col-12" for="ApellidosNombres">Nombre Completo</label>
                                     <div class="col-md-12">

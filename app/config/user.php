@@ -11,11 +11,11 @@ class User extends conexion
     {
         $sql = "SELECT * FROM empleados WHERE Apellidos_Nombres = '$username' AND Clave = '$password'";
 
-        $result = $this->connect()->query($sql);
+        $result = $this->connect()->query($sql,PDO::FETCH_ASSOC);
 
-        $numRows = $result->num_rows;
+        // $numRows = $result->num_rows;
 
-        if ($numRows == 1){
+        if ($result == 1){
             return true;
         }else{
             return false;

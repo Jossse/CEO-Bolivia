@@ -44,37 +44,37 @@ class conexion{
         $dbName = "sisrecocoap";
         $con = new PDO("sqlsrv:server=$serverName ; Database = $dbName", $userName, $userPassword);
                 
-    }
-    catch ( PDOException $e )
-    {
-        echo "Drivers disponiveis: " . implode( ",", PDO::getAvailableDrivers() );
-        echo "\nErro: " . $e->getMessage();
-        exit;
-    }
-    if( $con ) {
-        echo "Connection established.";
-        //$resultado = $query->fetchAll();
-        // $getResults= sqlsrv_query($con, "select * from empleados");
-        
-        // //echo $resultado['0']['0'];
-        // while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-        //     echo ($row['Apellidos_Nombres'] . PHP_EOL);
-        //     }
+        }
+        catch ( PDOException $e )
+        {
+            echo "Drivers disponiveis: " . implode( ",", PDO::getAvailableDrivers() );
+            echo "\nErro: " . $e->getMessage();
+            exit;
+        }
+        if( $con ) {
+            echo "Connection established.";
+            //$resultado = $query->fetchAll();
+            // $getResults= sqlsrv_query($con, "select * from empleados");
+            
+            // //echo $resultado['0']['0'];
+            // while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+            //     echo ($row['Apellidos_Nombres'] . PHP_EOL);
+            //     }
 
 
-        //PRUEBA DE CONSULTA FUNCIONA OK
-        // $sql="select CI, Cargo from empleados";
-        // $stm = $con->query('SELECT * FROM empleados');
-        // $rows = $stm->fetchAll();
-        // foreach ($rows as $row ) {
-        //     echo $row['CI']." - ".$row['Cargo']."<br>";
-        // }
+            //PRUEBA DE CONSULTA FUNCIONA OK
+            // $sql="select CI, Cargo from empleados";
+            // $stm = $con->query('SELECT * FROM empleados');
+            // $rows = $stm->fetchAll();
+            // foreach ($rows as $row ) {
+            //     echo $row['CI']." - ".$row['Cargo']."<br>";
+            // }
 
-    }
-    else{
-         echo "ERROR NO SE PUDO CONECTAR!!!";
-        //  die( print_r( sqlsrv_errors(), true));
-    }
+        }
+        else{
+            echo "ERROR NO SE PUDO CONECTAR!!!";
+            //  die( print_r( sqlsrv_errors(), true));
+        }
         return $con;
     }
 

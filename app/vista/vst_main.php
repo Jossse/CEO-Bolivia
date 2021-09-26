@@ -35,7 +35,7 @@ if (isset($_SESSION['usuario'])){
                                 class="fa fa-money"></i><span>COBROS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href=""><i
                                 class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i
+                <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i
                                 class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                 <li class="nav-item" id="btn_socio"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a>

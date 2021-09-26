@@ -38,7 +38,7 @@ $resp=$obj_ctrl->listar();
             <ul class="navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href=""><i class="fa fa-money"></i><span>COBROS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href=""><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link active" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a></li>
             </ul>

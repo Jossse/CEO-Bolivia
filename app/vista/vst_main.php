@@ -25,7 +25,7 @@ if (isset($_SESSION['usuario'])){
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
         <div class="container-fluid d-flex flex-column p-0"><a
                     class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-lock"></i></div>
+                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-lock" style="color:green"></i></div>
                 <div class="sidebar-brand-text mx-3"><span>SISRECOCOAP</span></div>
             </a>
             <hr class="sidebar-divider my-0">
@@ -33,9 +33,9 @@ if (isset($_SESSION['usuario'])){
                 <li class="nav-item"><a class="nav-link active" href=""><i
                                 class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href=""><i
                                 class="fa fa-money"></i><span>COBROS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i
+                <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i
                                 class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i
+                <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i
                                 class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                 <li class="nav-item" id="btn_socio"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a>

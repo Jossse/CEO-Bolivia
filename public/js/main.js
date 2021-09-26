@@ -56,6 +56,61 @@ $(document).ready( function () {
         },
     });
 
+    $('#periodo_data').DataTable({
+        "responsive": true,
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+    });
+
+    $('#consumo_data').DataTable({
+        "responsive": true,
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+    });
 } );
 
 $(document).on("click","#btnnuevo", function(){
@@ -131,4 +186,66 @@ $(document).on("click","#btnModificarSocio", function(){
     $("#cerrarModalSocio").click(function(){
         $("#modal_socios").modal('hide')
     });
+});
+
+$(document).on("click","#btnnuevoperiodo", function(){
+    $('#titulo_periodo').html('Periodo-Nuevo Registro');
+    $('#btnPeriodo').attr("name", "registro");
+    $('#IdPeriodo').removeAttr("readonly");
+    $('#IdPeriodo').attr("type", "text");
+    $('#FechaInicio').removeAttr("readonly");
+    $('#FechaFinal').removeAttr("readonly");
+    $('#periodo_form')[0].reset();
+    $('#modal_periodos').modal('show');
+});
+
+$(document).on("click","#btnModificarPeriodo", function(){
+    IdPeriodo = $(this).parents("tr").find("td").eq(0).html();
+    FechaInicio = $(this).parents("tr").find("td").eq(1).html();
+    FechaFinal = $(this).parents("tr").find("td").eq(2).html();
+    Tarifa = $(this).parents("tr").find("td").eq(3).html();
+    var date1 = FechaInicio.split(" ")[0];
+    var date2 = FechaFinal.split(" ")[0];
+    $('#titulo_periodo').html('Periodos-Modificar Registro');
+    $('#btnPeriodo').attr("name", "modificar");
+    $('#IdPeriodo').val(IdPeriodo);
+    $('#IdPeriodo').attr("readonly", "readonly");
+    $('#FechaInicio').val(date1);
+    $('#FechaFinal').val(date2);
+    $('#Tarifa').val(Tarifa);
+    $('#modal_periodos').modal('show');
+    $("#cerrarModalPeriodo").click(function(){
+    $("#modal_Periodo").modal('hide')
+    });
+});
+
+
+$(document).on("click","#btnnuevoconsumo", function(){
+    $('#titulo_consumo').html('Consumo-Nuevo Registro');
+    $('#btn').attr("name", "registro");
+    $('#Cuenta').attr("type", "text");
+    $('#IdPeriodo').attr("type", "text");
+    $('#consumo_form')[0].reset();
+    $('#modal_consumo').modal('show');
+});
+
+$(document).on("click","#btnModificarConsumo", function(){
+    IdConsumo = $(this).parents("tr").find("td").eq(0).html();
+    Cuenta = $(this).parents("tr").find("td").eq(1).html();
+    IdPeriodo = $(this).parents("tr").find("td").eq(2).html();
+    Cancelado = $(this).parents("tr").find("td").eq(3).html();
+    FechaPago = $(this).parents("tr").find("td").eq(4).html();
+    CIEmpleado = $(this).parents("tr").find("td").eq(5).html();
+    var date = FechaPago.split(" ")[0];
+
+    $('#titulo_consumo').html('Consumo-Modificar Registro');
+    $('#btn').attr("name", "modificar");
+    $('#IdConsumo').val(IdConsumo);
+    $('#Cuenta').val(Cuenta);
+    $('#IdPeriodo').val(IdPeriodo);
+    $('#Cancelado').val(Cancelado);
+    $('#FechaPago').val(date);
+    $('#CIEmpleado').val(CIEmpleado);
+    $('#modal_consumo').modal('show');
+
 });

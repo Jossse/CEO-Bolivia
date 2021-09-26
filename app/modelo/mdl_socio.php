@@ -53,9 +53,8 @@ class mdl_socio
 
     public function insertar()
     {
-        $sql = "insert into socios(Cuenta,ApellidosNombres, CI, Direccion, Celular, FechaRegistro,Activo) 
+        $sql = "insert into socios 
 		      VALUES(
-		        '$this->Cuenta',
 		      	'$this->ApellidosNombres', 
 		      	'$this->CI',
 		      	'$this->Direccion', 

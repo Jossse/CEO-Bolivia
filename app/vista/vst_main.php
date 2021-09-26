@@ -33,7 +33,7 @@ if (isset($_SESSION['usuario'])){
                 <li class="nav-item"><a class="nav-link active" href=""><i
                                 class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href=""><i
                                 class="fa fa-money"></i><span>COBROS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i
+                <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i
                                 class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i
                                 class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>

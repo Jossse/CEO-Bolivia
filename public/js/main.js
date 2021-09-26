@@ -83,6 +83,34 @@ $(document).ready( function () {
             }
         },
     });
+
+    $('#consumo_data').DataTable({
+        "responsive": true,
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+    });
 } );
 
 $(document).on("click","#btnnuevo", function(){
@@ -189,4 +217,35 @@ $(document).on("click","#btnModificarPeriodo", function(){
     $("#cerrarModalPeriodo").click(function(){
     $("#modal_Periodo").modal('hide')
     });
+});
+
+
+$(document).on("click","#btnnuevoconsumo", function(){
+    $('#titulo_consumo').html('Consumo-Nuevo Registro');
+    $('#btn').attr("name", "registro");
+    $('#Cuenta').attr("type", "text");
+    $('#IdPeriodo').attr("type", "text");
+    $('#consumo_form')[0].reset();
+    $('#modal_consumo').modal('show');
+});
+
+$(document).on("click","#btnModificarConsumo", function(){
+    IdConsumo = $(this).parents("tr").find("td").eq(0).html();
+    Cuenta = $(this).parents("tr").find("td").eq(1).html();
+    IdPeriodo = $(this).parents("tr").find("td").eq(2).html();
+    Cancelado = $(this).parents("tr").find("td").eq(3).html();
+    FechaPago = $(this).parents("tr").find("td").eq(4).html();
+    CIEmpleado = $(this).parents("tr").find("td").eq(5).html();
+    var date = FechaPago.split(" ")[0];
+
+    $('#titulo_consumo').html('Consumo-Modificar Registro');
+    $('#btn').attr("name", "modificar");
+    $('#IdConsumo').val(IdConsumo);
+    $('#Cuenta').val(Cuenta);
+    $('#IdPeriodo').val(IdPeriodo);
+    $('#Cancelado').val(Cancelado);
+    $('#FechaPago').val(date);
+    $('#CIEmpleado').val(CIEmpleado);
+    $('#modal_consumo').modal('show');
+
 });

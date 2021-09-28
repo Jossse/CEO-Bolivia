@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>COBROS - SISRECOCOAP</title>
+        <title>COMSUMOS - SISRECOCOAP</title>
         <meta name="description" content="SISRECOCOAP">
         <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../public/js/plugins/datatables/dataTables.bootstrap4.min.css">
@@ -22,7 +22,7 @@
 
 <body id="page-top">
     <?php
-        require("../controlador/ctrl_consumo.php");
+        require_once("../controlador/ctrl_consumo.php");
         $obj_ctrl=new ctrl_consumo();
         $resp=$obj_ctrl->listar();
     ?>
@@ -75,7 +75,7 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">COBROS</h3>
-                            <button type="button" class="btn btn-alt-primary" id="btnnuevoconsumo">
+                            <button type="button" class="btn btn-alt-primary" id="btnnuevo">
                                 Nuevo <i class="fa fa-newspaper-o ml-5"></i>
                             </button>
                         </div>
@@ -117,7 +117,7 @@
                                     echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_consumo.php?var=".$IdConsumo."'>
                                               <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                             </a></td>";
-                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificarConsumo'  aria-label='Left Align'>
+                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificar'  aria-label='Left Align'>
                                               <span class='fa fa-pencil' aria-hidden='true'></span>
                                             </button></td>";
 
@@ -144,7 +144,7 @@
                                 <div class="form-group row">
                                     <label class="col-12" for="IdConsumo">IdConsumo</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="IdConsumo" name="IdConsumo" placeholder="" required>
+                                        <input type="text" class="form-control" id="IdConsumo" name="IdConsumo" placeholder="" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -168,20 +168,20 @@
                                 <div class="form-group row">
                                     <label class="col-12" for="FechaPago">FechaPago</label>
                                     <div class="col-md-12">
-                                        <input type="date" class="form-control" id="FechaPago" name="FechaPago" >
+                                        <input type="date" class="form-control" id="FechaPago" name="FechaPago" placeholder="" required >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-12" for="CIEmpleado">CIEmpleado</label>
                                     <div class="col-md-12">
-                                        <input type="date" class="form-control" id="CIEmpleado" name="CIEmpleado" >
+                                        <input type="text" class="form-control" id="CIEmpleado" name="CIEmpleado" placeholder="" required >
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" name="registro" id="btnConsumo" class="btn btn-primary">Enviar</button>
-                                <button type="button" class="btn btn-secondary" id="cerrarModalConsumo" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" name="registro" id="btn" class="btn btn-primary">Enviar</button>
+                                <button type="button" class="btn btn-secondary" id="cerrarModal" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </form>

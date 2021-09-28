@@ -1,6 +1,6 @@
 <?php
 
-require("../config/conexion.php");
+require_once("../config/conexion.php");
 
 class mdl_consumo
 {
@@ -36,16 +36,21 @@ class mdl_consumo
 
     public function listar()
     {
-        $sql = "select * from consumos where IdConsumo=1";
+        $sql = "select * from consumos WHERE (Consumos.IdPeriodo = left(lower(DATENAME(month, GetDate())),3)+format(GetDate(),'yy'))";
         $res = $this->con->consulta_valor($sql);
         return ($res);
+    }
 
+    public function listarpagados()
+    {
+        $sql = "select * from consumos WHERE (Consumos.Cancelado=1 and Consumos.IdPeriodo = left(lower(DATENAME(month, GetDate())),3)+format(GetDate(),'yy'))";
+        $res = $this->con->consulta_valor($sql);
+        return ($res);
     }
 
     public function eliminar()
     {
-
-        $sql = "update consumos set Cancelado=1 where IdConsumo='$this->IdConsumo'";
+        $sql = "DELETE FROM Consumos WHERE IdConsumo='$this->IdConsumo'";
         $this->con->consulta_simple($sql);
     }
 
@@ -53,7 +58,6 @@ class mdl_consumo
     {
         $sql = "insert into consumos
                 VALUES(
-                    '$this->IdConsumo',
                     '$this->Cuenta',
                     '$this->IdPeriodo',
                     '$this->Cancelado',
@@ -72,13 +76,12 @@ class mdl_consumo
     public function modificar()
     {
         $sql = "update consumos set 
-                IdConsumo='$this->IdConsumo'
-                Cuenta='$this->Cuenta'
-                IdPeriodo='$this->IdPeriodo'
-                Cancelado='$this->Cancelado'
-                FechaPago='$this->FechaPago'
+                Cuenta='$this->Cuenta',
+                IdPeriodo='$this->IdPeriodo',
+                Cancelado='$this->Cancelado',
+                FechaPago='$this->FechaPago',
                 CIEmpleado='$this->CIEmpleado'
-                where CI='$this->IdConsumo'";
+                where IdConsumo='$this->IdConsumo'";
         $this->con->consulta_simple($sql);
     }
 }

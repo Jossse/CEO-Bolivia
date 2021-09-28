@@ -1,5 +1,5 @@
 <?php
-    require("../modelo/mdl_periodo.php");
+    require_once("../modelo/mdl_periodo.php");
     class ctrl_periodo{
         public $obj;
 

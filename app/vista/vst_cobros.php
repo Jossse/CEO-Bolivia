@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>EMPLEADOS - SISRECOCOAP</title>
+        <title>COBROS - SISRECOCOAP</title>
         <meta name="description" content="SISRECOCOAP">
         <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../public/js/plugins/datatables/dataTables.bootstrap4.min.css">
@@ -22,8 +22,8 @@
 
 <body id="page-top">
     <?php
-        require_once("../controlador/ctrl_socios.php");
-        $obj_ctrl=new ctrl_socios();
+        require("../controlador/ctrl_consumo.php");
+        $obj_ctrl=new ctrl_consumo();
         $resp=$obj_ctrl->listar();
     ?>
 <div id="wrapper">
@@ -35,10 +35,10 @@
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item"><a class="nav-link" href="vst_main.php"><i class="fa fa-home"></i><span>INICIO</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -74,23 +74,24 @@
                 <div class="content">
                     <div class="block">
                         <div class="block-header block-header-default">
-                            <h3 class="block-title">Socios</h3>
-                            <button type="button" class="btn btn-alt-primary" id="btnnuevosocio">
+                            <h3 class="block-title">COBROS</h3>
+                            <button type="button" class="btn btn-alt-primary" id="btnnuevoconsumo">
                                 Nuevo <i class="fa fa-newspaper-o ml-5"></i>
                             </button>
                         </div>
                         <div class="block-content block-content-full">
-                            <table id="socio_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                            <table id="consumo_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
                                 <thead>
                                 <tr>
-                                    <th style="width: 10%;">Nº Cuenta</th>
-                                    <th style="width: 18%;">Nombre Completo</th>
-                                    <th style="width: 10%;">Ci</th>
-                                    <th style="width: 18%;">Direcci&oacute;n</th>
-                                    <th style="width: 10%;">Celular</th>
-                                    <th style="width: 10%;">Fecha de Registro</th>
+                                    <th style="width: 10%;">IdConsumo</th>
+                                    <th style="width: 10%;">Cuenta</th>
+                                    <th style="width: 10%;">IdPeriodo</th>
+                                    <th style="width: 10%;">Cancelado</th>
+                                    <th style="width: 10%;">FechaPago</th>
+                                    <th style="width: 10%;">CIEmpleado</th>
                                     <th class="text-center" style="width: 10%;"></th>
                                     <th class="text-center" style="width: 10%;"></th>
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -98,25 +99,25 @@
                                  $rows = $resp->fetchAll();
                                  foreach ($rows as $row ) {
                                 
+                                    $IdConsumo = $row["IdConsumo"];
                                     $Cuenta = $row["Cuenta"];
-                                    $Apellidos_Nombres = $row["ApellidosNombres"];
-                                    $CI = $row["CI"];
-                                    $Direccion = $row["Direccion"];
-                                    $Celular = $row["Celular"];
-                                    $FechaRegistro = $row["FechaRegistro"];
+                                    $IdPeriodo = $row["IdPeriodo"];
+                                    $Cancelado = $row["Cancelado"];
+                                    $FechaPago = $row["FechaPago"];
+                                    $CIEmpleado = $row["CIEmpleado"];
 
                                     echo "<tr>";
+                                    echo "<td>".$IdConsumo."</td>";
                                     echo "<td>".$Cuenta."</td>";
-                                    echo "<td>".$Apellidos_Nombres."</td>";
-                                    echo "<td>".$CI."</td>";
-                                    echo "<td>".$Direccion."</td>";
-                                    echo "<td>".$Celular."</td>";
-                                    echo "<td>".$FechaRegistro."</td>";
+                                    echo "<td>".$IdPeriodo."</td>";
+                                    echo "<td>".$Cancelado."</td>";
+                                    echo "<td>".$FechaPago."</td>";
+                                    echo "<td>".$CIEmpleado."</td>";
 
-                                    echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_socios.php?var=".$Cuenta."'>
+                                    echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_consumo.php?var=".$IdConsumo."'>
                                               <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                             </a></td>";
-                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificarSocio'  aria-label='Left Align'>
+                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificarConsumo'  aria-label='Left Align'>
                                               <span class='fa fa-pencil' aria-hidden='true'></span>
                                             </button></td>";
 
@@ -132,56 +133,55 @@
             </main>
             <!-- Contenido -->
 
-            <div id="modal_socios" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div id="modal_consumo" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" id="socio_form" action="../controlador/enrutador_socio.php">
+                    <form method="post" id="consumo_form" action="../controlador/enrutador_consumo.php">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="titulo_socio"></h5>
+                                <h5 class="modal-title" id="titulo_consumo"></h5>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group row">
+                                    <label class="col-12" for="IdConsumo">IdConsumo</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="IdConsumo" name="IdConsumo" placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-12" for="Cuenta">Cuenta</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="Cuenta" name="Cuenta" placeholder="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-12" for="ApellidosNombres">Apellidos y Nombres</label>
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" id="ApellidosNombres" name="ApellidosNombres" placeholder="" required>
+                                        <input type="text" class="form-control" id="Cuenta" name="Cuenta" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-12" for="CI">CI</label>
+                                    <label class="col-12" for="IdPeriodo">IdPeriodo</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="CI" name="CI" placeholder="" required>
+                                        <input type="text" class="form-control" id="IdPeriodo" name="IdPeriodo" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-12" for="Direccion">Direcci&oacute;n</label>
+                                    <label class="col-12" for="Cancelado">Cancelado</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="" required>
+                                        <input type="text" class="form-control" id="Cancelado" name="Cancelado" placeholder="" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-12" for="Celular">Celular</label>
+                                    <label class="col-12" for="FechaPago">FechaPago</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="Celular" name="Celular" placeholder="" required>
+                                        <input type="date" class="form-control" id="FechaPago" name="FechaPago" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-12" for="FechaRegistro">Fecha de Registro</label>
+                                    <label class="col-12" for="CIEmpleado">CIEmpleado</label>
                                     <div class="col-md-12">
-                                        <input type="date" class="form-control" id="FechaRegistro" name="FechaRegistro" >
+                                        <input type="date" class="form-control" id="CIEmpleado" name="CIEmpleado" >
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" name="registro" id="btnSocio" class="btn btn-primary">Enviar</button>
-                                <button type="button" class="btn btn-secondary" id="cerrarModalSocio" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" name="registro" id="btnConsumo" class="btn btn-primary">Enviar</button>
+                                <button type="button" class="btn btn-secondary" id="cerrarModalConsumo" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </form>

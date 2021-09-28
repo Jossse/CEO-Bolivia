@@ -1,5 +1,5 @@
 <?php
-    require("../modelo/mdl_consumo.php");
+    require_once("../modelo/mdl_consumo.php");
     class ctrl_consumo{
         public $obj;
 
@@ -9,6 +9,11 @@
 
         public function listar(){
             $res=$this->obj->listar();
+            return($res);
+        }
+
+        public function listarpagados(){
+            $res=$this->obj->listarpagados();
             return($res);
         }
 
@@ -24,13 +29,13 @@
         }
 
         public function agregar_consumo(){
-            $this->obj->set("IdConsumo",$_POST["IdConsumo"]);
             $this->obj->set("Cuenta",$_POST["Cuenta"]);
             $this->obj->set("IdPeriodo",$_POST["IdPeriodo"]);
             $this->obj->set("Cancelado",$_POST["Cancelado"]);
             $this->obj->set("FechaPago",$_POST["FechaPago"]);
             $this->obj->set("CIEmpleado",$_POST["CIEmpleado"]);
-            $this->obj->insertar();?>
+            $this->obj->insertar();
+            ?>
             <script type="text/javascript">
                 window.location.href="../vista/vst_consumos.php";
             </script>
@@ -51,10 +56,10 @@
             $this->obj->set("CIEmpleado",$_POST["CIEmpleado"]);
             $this->obj->modificar();
             ?>
-            <script type="text/javascript">
-                window.location.href="../vista/vst_consumos.php";
+             <script type="text/javascript">
+                 window.location.href="../vista/vst_consumos.php";
 
-            </script>
+             </script>
             <?php
         }
 
@@ -66,9 +71,6 @@
         $obj->eliminar();
     }
 
-    if (isset($_POST["btn"])) {
-        $obj->agregar_consumo();
-    }
 
     if (isset($_POST["modificar"])) {
         $obj->modificar();

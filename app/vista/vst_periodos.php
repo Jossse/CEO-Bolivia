@@ -23,7 +23,7 @@
 
   <body id="page-top">
     <?php
-        require("../controlador/ctrl_periodo.php");
+        require_once("../controlador/ctrl_periodo.php");
         $obj_ctrl=new ctrl_periodo();
         $resp=$obj_ctrl->listar();
 
@@ -37,7 +37,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href=""><i class="fa fa-money"></i><span>COBROS</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="vst_main.php"><i class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
@@ -104,12 +104,12 @@
                                                 $Tarifa = $row["Tarifa"];
     
                                                 echo "<tr>";
-                                                echo "<td>" . $IdPeriodo . "</td>";
-                                                echo "<td>" . $FechaInicio . "</td>";
-                                                echo "<td>" . $FechaFinal . "</td>";
-                                                echo "<td>" . $Tarifa . "</td>";
+                                                echo "<td>".$IdPeriodo."</td>";
+                                                echo "<td>".$FechaInicio."</td>";
+                                                echo "<td>".$FechaFinal."</td>";
+                                                echo "<td>".$Tarifa."</td>";
 
-                                                echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_periodo.php?var=" . $IdPeriodo . "'>
+                                                echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_periodo.php?var=".$IdPeriodo."'>
                                                 <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                                 </a></td>";
                                                 echo "<td><button type='button'  class='btn btn-default'  id='btnModificarPeriodo'  aria-label='Left Align'>
@@ -140,19 +140,19 @@
                                     <div class="form-group row">
                                         <label class="col-12" for="IdPeriodo">IdPeriodo</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="IdPeriodo" name="IdPeriodo" placeholder="" required>
+                                            <input type="text" class="form-control" id="IdPeriodo" name="IdPeriodo" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-12" for="FechaInicio">FechaInicio</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="FechaInicio" name="FechaInicio" placeholder="" required>
+                                            <input type="date" class="form-control" id="FechaInicio" name="FechaInicio" placeholder="" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-12" for="FechaFinal">FechaFinal</label>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" id="FechaFinal" name="FechaFinal" placeholder="" required>
+                                            <input type="date" class="form-control" id="FechaFinal" name="FechaFinal" placeholder="" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -163,8 +163,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" name="registro" id="btn" class="btn btn-primary">Enviar</button>
-                                    <button type="button" class="btn btn-secondary" id="cerrarModal" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" name="registro" id="btnPeriodo" class="btn btn-primary">Enviar</button>
+                                    <button type="button" class="btn btn-secondary" id="cerrarModalPeriodo" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </form>

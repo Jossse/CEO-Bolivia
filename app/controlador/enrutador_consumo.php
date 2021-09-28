@@ -1,6 +1,6 @@
 <?php
-    require("ctrl_consumos.php");
-    $obj = new ctrl_socios();
+    require_once("ctrl_consumo.php");
+    $obj = new ctrl_consumo();
 
     if (isset($_GET["var"])) {
         $obj = new ctrl_consumo();

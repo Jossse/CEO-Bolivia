@@ -1,5 +1,5 @@
 <?php
-    require("ctrl_periodo.php");
+    require_once("ctrl_periodo.php");
     $obj = new ctrl_periodo();
 
     if (isset($_GET["var"])) {

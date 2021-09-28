@@ -23,7 +23,7 @@ if (isset($_SESSION['usuario'])){
 
 <body id="page-top">
 <?php
-require("../controlador/ctrl_empleado.php");
+require_once("../controlador/ctrl_empleado.php");
 $obj_ctrl=new ctrl_empleado();
 $resp=$obj_ctrl->listar();
 
@@ -36,7 +36,7 @@ $resp=$obj_ctrl->listar();
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href=""><i class="fa fa-money"></i><span>COBROS</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="vst_main.php"><i class="fa fa-home"></i><span>INICIO</span></a><a class="nav-link" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
@@ -96,7 +96,7 @@ $resp=$obj_ctrl->listar();
                                     </tr>
                                     </thead>
                                     <tbody>
-<?php
+                                    <?php 
                                         $rows = $resp->fetchAll();
                                         foreach ($rows as $row ) {
                                         
@@ -109,15 +109,15 @@ $resp=$obj_ctrl->listar();
                                             $FechaRegistro = $row["FechaRegistro"];
 
                                             echo "<tr>";
-                                            echo "<td>" . $CI . "</td>";
-                                            echo "<td>" . $Apellidos_Nombres . "</td>";
-                                            echo "<td>" . $Direccion . "</td>";
-                                            echo "<td>" . $Celular . "</td>";
-                                            echo "<td>" . $Cargo . "</td>";
-                                            echo "<td style='display: none'>" . $Clave . "</td>";
-                                            echo "<td>" . $FechaRegistro . "</td>";
+                                            echo "<td>".$CI."</td>";
+                                            echo "<td>".$Apellidos_Nombres."</td>";
+                                            echo "<td>".$Direccion."</td>";
+                                            echo "<td>".$Celular."</td>";
+                                            echo "<td>".$Cargo."</td>";
+                                            echo "<td style='display: none'>".$Clave."</td>";
+                                            echo "<td>".$FechaRegistro."</td>";
 
-                                            echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_empleado.php?var=" . $CI . "'>
+                                            echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_empleado.php?var=".$CI."'>
                                               <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                             </a></td>";
                                             echo "<td><button type='button'  class='btn btn-default'  id='btnModificar'  aria-label='Left Align'>
@@ -126,7 +126,7 @@ $resp=$obj_ctrl->listar();
 
                                             echo "</tr>";
                                         }
-?>
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -22,7 +22,7 @@
 
 <body id="page-top">
     <?php
-        require("../controlador/ctrl_consumo.php");
+        require_once("../controlador/ctrl_consumo.php");
         $obj_ctrl=new ctrl_consumo();
         $resp=$obj_ctrl->listar();
     ?>
@@ -34,11 +34,11 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-home"></i><span>INICIO</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-money"></i><span>COBROS</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_main.php"><i class="fa fa-home"></i><span>INICIO</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -75,7 +75,7 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">CONSUMOS</h3>
-                            <button type="button" class="btn btn-alt-primary" id="btnnuevoconsumo">
+                            <button type="button" class="btn btn-alt-primary" id="btnnuevo">
                                 Nuevo <i class="fa fa-newspaper-o ml-5"></i>
                             </button>
                         </div>
@@ -107,17 +107,17 @@
                                     $CIEmpleado = $row["CIEmpleado"];
 
                                     echo "<tr>";
-                                    echo "<td>" . $IdConsumo . "</td>";
-                                    echo "<td>" . $Cuenta . "</td>";
-                                    echo "<td>" . $IdPeriodo . "</td>";
-                                    echo "<td>" . $Cancelado . "</td>";
-                                    echo "<td>" . $FechaPago . "</td>";
-                                    echo "<td>" . $CIEmpleado . "</td>";
+                                    echo "<td>".$IdConsumo."</td>";
+                                    echo "<td>".$Cuenta."</td>";
+                                    echo "<td>".$IdPeriodo."</td>";
+                                    echo "<td>".$Cancelado."</td>";
+                                    echo "<td>".$FechaPago."</td>";
+                                    echo "<td>".$CIEmpleado."</td>";
 
-                                    echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_consumos.php?var=" . $IdConsumo . "'>
+                                    echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_consumo.php?var=".$IdConsumo."'>
                                               <span class=\"fa fa-trash\" aria-hidden='true'></span>
                                             </a></td>";
-                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificarConsumo'  aria-label='Left Align'>
+                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificar'  aria-label='Left Align'>
                                               <span class='fa fa-pencil' aria-hidden='true'></span>
                                             </button></td>";
 
@@ -144,7 +144,7 @@
                                 <div class="form-group row">
                                     <label class="col-12" for="IdConsumo">IdConsumo</label>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" id="IdConsumo" name="IdConsumo" placeholder="" required>
+                                        <input type="text" class="form-control" id="IdConsumo" name="IdConsumo" placeholder="" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -168,20 +168,20 @@
                                 <div class="form-group row">
                                     <label class="col-12" for="FechaPago">FechaPago</label>
                                     <div class="col-md-12">
-                                        <input type="date" class="form-control" id="FechaPago" name="FechaPago" >
+                                        <input type="date" class="form-control" id="FechaPago" name="FechaPago" placeholder="" required >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-12" for="CIEmpleado">CIEmpleado</label>
                                     <div class="col-md-12">
-                                        <input type="date" class="form-control" id="CIEmpleado" name="CIEmpleado" >
+                                        <input type="text" class="form-control" id="CIEmpleado" name="CIEmpleado" placeholder="" required >
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" name="registro" id="btnConsumo" class="btn btn-primary">Enviar</button>
-                                <button type="button" class="btn btn-secondary" id="cerrarModalConsumo" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" name="registro" id="btn" class="btn btn-primary">Enviar</button>
+                                <button type="button" class="btn btn-secondary" id="cerrarModal" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </form>

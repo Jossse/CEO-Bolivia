@@ -1,5 +1,5 @@
 <?php
-    require("../config/conexion.php");
+    require_once("../config/conexion.php");
     class mdl_periodo
     {
         private $IdPeriodo;
@@ -64,7 +64,7 @@
                     IdPeriodo='$this->IdPeriodo',
                     FechaInicio='$this->FechaInicio',
                     FechaFinal='$this->FechaFinal',
-                    Tarifa='$this->Tarifa' 
+                    Tarifa='$this->Tarifa'
                     where IdPeriodo='$this->IdPeriodo'";
             $this->con->consulta_simple($sql);
         }

@@ -1,75 +1,80 @@
 <?php
+    require_once("../modelo/mdl_socio.php");
+    class ctrl_socios{
+        public $obj;
 
-require("../modelo/mdl_socio.php");
-class ctrl_socios{
-    public $obj;
+        function __construct(){
+            $this->obj=new mdl_socio();
+        }
 
-    function __construct(){
-        $this->obj=new mdl_socio();
-    }
+        public function listar(){
+            $res=$this->obj->listar();
+            return($res);
+        }
 
-    public function listar(){
-        $res=$this->obj->listar();
-        return($res);
-    }
+        public function listartodos(){
+            $res=$this->obj->listartodos();
+            return($res);
+        }
 
-    public function eliminar(){
-        $dato=$_GET["var"];
-        $this->obj->set("CI",$dato);
-        $this->obj->eliminar();
-        ?>
-        <script type="text/javascript">
-            window.location.href="../vista/vst_socios.php";
-        </script>
-        <?php
-    }
+        public function contar(){
+            $res=$this->obj->contar();
+            return($res);
+        }
 
-    public function agregar_socio(){
-        
-        $this->obj->set("ApellidosNombres",$_POST["ApellidosNombres"]);
-        $this->obj->set("CI",$_POST["CI"]);
-        $this->obj->set("Direccion",$_POST["Direccion"]);
-        $this->obj->set("Celular",$_POST["Celular"]);
-        $this->obj->set("FechaRegistro",$_POST["FechaRegistro"]);
-        $this->obj->insertar();?>
-        <script type="text/javascript">
-            window.location.href="../vista/vst_socios.php";
+        public function eliminar(){
+            $dato=$_GET["var"];
+            $this->obj->set("CI",$dato);
+            $this->obj->eliminar();
+            ?>
+            <script type="text/javascript">
+                window.location.href="../vista/vst_socios.php";
+            </script>
+            <?php
+        }
 
-        </script>
-        <?php
-    }
-    public function buscar($codigo){
-        $this->obj->set("CI", $codigo);
-        $resp=$this->obj->buscar();
-        return($resp);
-    }
+        public function agregar_socio(){
+            $this->obj->set("ApellidosNombres",$_POST["ApellidosNombres"]);
+            $this->obj->set("CI",$_POST["CI"]);
+            $this->obj->set("Direccion",$_POST["Direccion"]);
+            $this->obj->set("Celular",$_POST["Celular"]);
+            $this->obj->set("FechaRegistro",$_POST["FechaRegistro"]);
+            $this->obj->insertar();?>
+            <script type="text/javascript">
+                window.location.href="../vista/vst_socios.php";
+            </script>
+            <?php
+        }
+        public function buscar($codigo){
+            $this->obj->set("CI", $codigo);
+            $resp=$this->obj->buscar();
+            return($resp);
+        }
 
-    public function modificar(){
-        $this->obj->set("ApellidosNombres",$_POST["ApellidosNombres"]);
-        $this->obj->set("CI",$_POST["CI"]);
-        $this->obj->set("Direccion",$_POST["Direccion"]);
-        $this->obj->set("Celular",$_POST["Celular"]);
-        $this->obj->set("FechaRegistro",$_POST["FechaRegistro"]);
-        $this->obj->modificar();
-        ?>
-        <script type="text/javascript">
-            window.location.href="../vista/vst_socios.php";
+        public function modificar(){
+            $this->obj->set("Cuenta",$_POST["Cuenta"]);
+            $this->obj->set("ApellidosNombres",$_POST["ApellidosNombres"]);
+            $this->obj->set("CI",$_POST["CI"]);
+            $this->obj->set("Direccion",$_POST["Direccion"]);
+            $this->obj->set("Celular",$_POST["Celular"]);
+            $this->obj->set("FechaRegistro",$_POST["FechaRegistro"]);
+            $this->obj->modificar();
+            ?>
+            <script type="text/javascript">
+                window.location.href="../vista/vst_socios.php";
+            </script>
+            <?php
+        }
 
-        </script>
-        <?php
-    }
-
-}//end class
-$obj=new ctrl_socios();
-
-if (isset($_GET["var"])){
+    }//end class
     $obj=new ctrl_socios();
-    $obj->eliminar();
-}
 
-if (isset($_POST["modificar"])) {
-    $obj->modificar();
-}
+    if (isset($_GET["var"])){
+        $obj=new ctrl_socios();
+        $obj->eliminar();
+    }
 
-
+    if (isset($_POST["modificar"])) {
+        $obj->modificar();
+    }
 ?>

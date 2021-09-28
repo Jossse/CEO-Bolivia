@@ -111,6 +111,7 @@ $(document).ready( function () {
             }
         },
     });
+
 } );
 
 $(document).on("click","#btnnuevo", function(){
@@ -183,21 +184,22 @@ $(document).on("click","#btnModificarSocio", function(){
     $('#FechaRegistro').val(date);
     $('#FechaRegistro').attr("readonly", "readonly");
     $('#modal_socios').modal('show');
-    $("#cerrarModalSocio").click(function(){
-        $("#modal_socios").modal('hide')
-    });
+
 });
+$("#cerrarModalSocios").click(function(){
+    $("#modal_socios").modal('hide')
+    });
 
 $(document).on("click","#btnnuevoperiodo", function(){
     $('#titulo_periodo').html('Periodo-Nuevo Registro');
     $('#btnPeriodo').attr("name", "registro");
     $('#IdPeriodo').removeAttr("readonly");
-    $('#IdPeriodo').attr("type", "text");
-    $('#FechaInicio').removeAttr("readonly");
-    $('#FechaFinal').removeAttr("readonly");
+    // $('#FechaInicio').removeAttr("readonly");
+    // $('#FechaFinal').removeAttr("readonly");
     $('#periodo_form')[0].reset();
-    $('#modal_periodos').modal('show');
+    $('#modal_periodo').modal('show');
 });
+
 
 $(document).on("click","#btnModificarPeriodo", function(){
     IdPeriodo = $(this).parents("tr").find("td").eq(0).html();
@@ -206,30 +208,32 @@ $(document).on("click","#btnModificarPeriodo", function(){
     Tarifa = $(this).parents("tr").find("td").eq(3).html();
     var date1 = FechaInicio.split(" ")[0];
     var date2 = FechaFinal.split(" ")[0];
-    $('#titulo_periodo').html('Periodos-Modificar Registro');
+    $('#titulo_periodo').html('Periodo-Modificar Registro');
     $('#btnPeriodo').attr("name", "modificar");
     $('#IdPeriodo').val(IdPeriodo);
     $('#IdPeriodo').attr("readonly", "readonly");
     $('#FechaInicio').val(date1);
     $('#FechaFinal').val(date2);
     $('#Tarifa').val(Tarifa);
-    $('#modal_periodos').modal('show');
-    $("#cerrarModalPeriodo").click(function(){
-    $("#modal_Periodo").modal('hide')
-    });
+    $('#modal_periodo').modal('show');
+
+
 });
 
+$("#cerrarModalPeriodo").click(function(){
+    $("#modal_Periodo").modal('hide')
+    });
 
-$(document).on("click","#btnnuevoconsumo", function(){
+$(document).on("click","#btnnuevo", function(){
     $('#titulo_consumo').html('Consumo-Nuevo Registro');
     $('#btn').attr("name", "registro");
-    $('#Cuenta').attr("type", "text");
-    $('#IdPeriodo').attr("type", "text");
+    $('#IdConsumo').removeAttr("readonly");
+    // $('#IdPeriodo').removeAttr("readonly");
     $('#consumo_form')[0].reset();
     $('#modal_consumo').modal('show');
 });
 
-$(document).on("click","#btnModificarConsumo", function(){
+$(document).on("click","#btnModificar", function(){
     IdConsumo = $(this).parents("tr").find("td").eq(0).html();
     Cuenta = $(this).parents("tr").find("td").eq(1).html();
     IdPeriodo = $(this).parents("tr").find("td").eq(2).html();
@@ -241,6 +245,7 @@ $(document).on("click","#btnModificarConsumo", function(){
     $('#titulo_consumo').html('Consumo-Modificar Registro');
     $('#btn').attr("name", "modificar");
     $('#IdConsumo').val(IdConsumo);
+    $('#IdConsumo').attr("readonly", "readonly");
     $('#Cuenta').val(Cuenta);
     $('#IdPeriodo').val(IdPeriodo);
     $('#Cancelado').val(Cancelado);
@@ -249,3 +254,12 @@ $(document).on("click","#btnModificarConsumo", function(){
     $('#modal_consumo').modal('show');
 
 });
+
+$("#cerrarModal").click(function(){
+    $("#modal_Consumo").modal('hide')
+    });
+
+
+        $('#sidebarToggle').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });

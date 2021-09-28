@@ -19,21 +19,9 @@ class conexion{
 
     function connect()
     {
-        //$serverName = "NP270\SQLExpress";//server-ip 
-        //$connectionInfo = array( $this->db,$this->usuario,$this->clave);
-        //$con =  new PDO( $this->host, $connectionInfo);
         try
         {
-        //$con = new PDO("sqlsrv:server=$this->host ; Database = $this->db", "", "");   
-        
-        
-        // $serverName = "NP270\SQLExpress";//server-ip 
-        // $connectionInfo = array( "Database"=>"sisrecocoap");
-        // $con = sqlsrv_connect( $serverName, $connectionInfo);
-
-
         // $con = new mysqli($this->host, $this->usuario, $this->clave, $this->db);
-
         // $con = new PDO('mysql:host=localhost;dbname=sisrecocoap',$this->usuario,$this->clave);
         // $con = new PDO('mysql:host=localhost;dbname=sisrecocoap','root','');
         
@@ -52,34 +40,15 @@ class conexion{
             exit;
         }
         if( $con ) {
-            echo "Connection established.";
-            //$resultado = $query->fetchAll();
-            // $getResults= sqlsrv_query($con, "select * from empleados");
-            
-            // //echo $resultado['0']['0'];
-            // while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-            //     echo ($row['Apellidos_Nombres'] . PHP_EOL);
-            //     }
-
-
-            //PRUEBA DE CONSULTA FUNCIONA OK
-            // $sql="select CI, Cargo from empleados";
-            // $stm = $con->query('SELECT * FROM empleados');
-            // $rows = $stm->fetchAll();
-            // foreach ($rows as $row ) {
-            //     echo $row['CI']." - ".$row['Cargo']."<br>";
-            // }
-
+            // echo "Connection established.";
         }
         else{
-            echo "ERROR NO SE PUDO CONECTAR!!!";
-            //  die( print_r( sqlsrv_errors(), true));
+            // echo "ERROR NO SE PUDO CONECTAR!!!";
         }
         return $con;
     }
 
     public function consulta_simple($sql){
-        // $this->connect()->query($sql);
         $this->connect()->query($sql);
     }
 

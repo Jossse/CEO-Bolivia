@@ -1,6 +1,6 @@
 <?php
 
-require("../config/conexion.php");
+require_once("../config/conexion.php");
 
 class mdl_socio
 {
@@ -41,12 +41,25 @@ class mdl_socio
         $sql = "select * from socios where Activo=1";
         $res = $this->con->consulta_valor($sql);
         return ($res);
+    }
+
+    public function listartodos()
+    {
+        $sql = "select * from socios";
+        $res = $this->con->consulta_valor($sql);
+        return ($res);
+    }
+
+    public function contar()
+    {
+        $sql = "SELECT count(*) as TotalSocios FROM Socios";
+        $res = $this->con->consulta_valor($sql);
+        return ($res);
 
     }
 
     public function eliminar()
     {
-
         $sql = "update socios set Activo=0 where CI='$this->CI'";
         $this->con->consulta_simple($sql);
     }
@@ -66,7 +79,7 @@ class mdl_socio
 
     public function buscar()
     {
-        $sql = "select * from socios where CI='$this->CI'";
+        $sql = "select * from socios where Cuenta='$this->Cuenta'";
         $res = $this->con->consulta_valor($sql);
         return ($res);
     }
@@ -78,7 +91,7 @@ class mdl_socio
                 Direccion='$this->Direccion',
                 Celular='$this->Celular',
                 FechaRegistro='$this->FechaRegistro' 
-                where CI='$this->CI'";
+                where Cuenta='$this->Cuenta'";
         $this->con->consulta_simple($sql);
     }
 }

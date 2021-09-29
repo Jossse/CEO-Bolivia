@@ -13,10 +13,11 @@ class User extends conexion
 
         $result = $this->connect()->query($sql,PDO::FETCH_ASSOC);
 
+        $fila = $result->fetch(PDO::FETCH_ASSOC);
         // $numRows = $result->num_rows;
 
         if ($result == 1){
-            return true;
+            return $fila;
         }else{
             return false;
         }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <?php
     session_start();
-    if (isset($_SESSION['usuario'])){
+    if (isset($_SESSION['login']['usuario'])){
     ?>
 <html>
 
@@ -59,7 +59,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['usuario']; ?></span><img class="border rounded-circle img-profile" src="../../public/img/avatar5.jpeg"></a>
+                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['login']['usuario']; ?></span><img class="border rounded-circle img-profile" src="../../public/img/avatar5.jpeg"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href=""><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Cuenta</a><a class="dropdown-item" href=""><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Configuración</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" href="../config/logout.php"><strong>Salida</strong></a>
                                 </div>
@@ -75,7 +75,7 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">CONSUMOS</h3>
-                            <button type="button" class="btn btn-alt-primary" id="btnnuevo">
+                            <button type="button" class="btn btn-alt-primary" id="btnnuevoconsumo">
                                 Nuevo <i class="fa fa-newspaper-o ml-5"></i>
                             </button>
                         </div>

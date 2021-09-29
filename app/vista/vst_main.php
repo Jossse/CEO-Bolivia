@@ -18,7 +18,7 @@ if (isset($_SESSION['login']['usuario'])){
     <link rel="stylesheet" href="../../public/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../../public/fonts/fontawesome5-overrides.min.css">
     <script type="text/javascript" src="../../public/js/jquery.js"></script>
-    <script type="text/javascript" src="../../public/chart.js/Chart.js"></script>
+    <!-- <script type="text/javascript" src="../../public/chart.js/Chart.js"></script> -->
 </head>
 
 <body id="page-top">
@@ -223,27 +223,29 @@ if (isset($_SESSION['login']['usuario'])){
                         ?>
                         <div id='chart_div'></div>
                         <script type="text/javascript"
-                        src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script type="text/javascript">
-                        google.charts.load('current',{packages:['corechart']})
-                        google.charts.setOnLoadCallback(draw_my_chart)
+                            src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script type="text/javascript">
+                            google.charts.load('current',{packages:['corechart']})
+                            google.charts.setOnLoadCallback(draw_my_chart)
 
-                        function draw_my_chart(){
-                            var data=new google.visualization.DataTable();
-                            data.addColumn('string','IdPeriodo'); 
-                            data.addColumn('number','SubTotal');
-                            for(i=0; i<my_2.length; i++)
-                            data.addRow([my_2d[i][0],parseInt(my_2d[i][1])]);
-                            var options={
-                            title:'Valor acumulado al mes',
-                            hAxis:{title: 'Periodo', titleTextStyle: {color:'#333'}},
-                            vAxis:{minValue:0},
-                            width:500,
-                            height:400
-                            };
-                            var chart=new google.visualization.AreaChart(document.getElementById('chart_div'));
-                            chart.draw_my_chart(data,options);
+                            function draw_my_chart(){
+                                var data=new google.visualization.DataTable();
+                                data.addColumn('string','IdPeriodo'); 
+                                data.addColumn('number','SubTotal');
+                                for(i=0; i<my_2.length; i++)
+                                data.addRow([my_2d[i][0],parseInt(my_2d[i][1])]);
+                                var options={
+                                title:'Valor acumulado al mes',
+                                hAxis:{title: 'Periodo', titleTextStyle: {color:'#333'}},
+                                vAxis:{minValue:0},
+                                width:500,
+                                height:400
+                                };
+                                var chart=new google.visualization.AreaChart(document.getElementById('chart_div'));
+                                chart.draw_my_chart(data,options);
+                            }
                         </script>
+
                         </div>
                     </div>
                     

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (isset($_SESSION['usuario'])){
+if (isset($_SESSION['login']['usuario'])){
 
 ?>
 
@@ -85,7 +85,7 @@ if (isset($_SESSION['usuario'])){
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                                                        aria-expanded="false" data-bs-toggle="dropdown"
                                                                        href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['usuario']; ?> </span><img class="border rounded-circle img-profile"
+                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['login']['usuario']?> </span><img class="border rounded-circle img-profile"
                                                                           src="../../public/img/avatar5.jpeg"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href=""><i

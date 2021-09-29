@@ -8,10 +8,12 @@
             echo '<div class="alert alert-danger">Usuario o contraseña vacio</div>';
         }else{
             $user = new User();
-
-            if ($user->getUser($username,$password)){
+            $datos = $user->getUser($username,$password);
+            if (count($datos) > 0){
                 session_start();
-                $_SESSION['usuario'] = $username;
+                $_SESSION['login']['usuario'] = $username;
+                $_SESSION['login']['ci'] = $datos['CI'];
+                $_SESSION['login']['cargo'] = $datos['Cargo'];
                 header("location: ../vista/vst_main.php");
             }else{
                 echo '<div class="alert alert-danger">Usuario no existe</div>';

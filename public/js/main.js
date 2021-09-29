@@ -130,6 +130,7 @@ $(document).on("click","#btnModificar", function(){
     Direccion = $(this).parents("tr").find("td").eq(2).html();
     Celular = $(this).parents("tr").find("td").eq(3).html();
     Cargo = $(this).parents("tr").find("td").eq(4).html();
+    console.log(Cargo);
     Pass = $(this).parents("tr").find("td").eq(5).html();
     Fecha = $(this).parents("tr").find("td").eq(6).html();
     var date = Fecha.split(" ")[0];
@@ -140,7 +141,7 @@ $(document).on("click","#btnModificar", function(){
     $('#Apellidos_Nombres').val(Nombre);
     $('#Direccion').val(Direccion);
     $('#Celular').val(Celular);
-    $('#Cargo').val(Cargo);
+    $('#Cargo').val(Cargo).trigger('sync');
     $('#Clave').val(Pass);
     $('#Clave').attr("readonly", "readonly");
     $('#Clave').attr("type", "password");
@@ -224,7 +225,7 @@ $("#cerrarModalPeriodo").click(function(){
     $("#modal_Periodo").modal('hide')
     });
 
-$(document).on("click","#btnnuevo", function(){
+$(document).on("click","#btnnuevoconsumo", function(){
     $('#titulo_consumo').html('Consumo-Nuevo Registro');
     $('#btn').attr("name", "registro");
     $('#IdConsumo').removeAttr("readonly");

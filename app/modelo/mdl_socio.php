@@ -52,7 +52,7 @@ class mdl_socio
 
     public function contar()
     {
-        $sql = "SELECT count(*) as TotalSocios FROM Socios";
+        $sql = "SELECT count(*) as TotalSocios FROM Socios WHERE Activo=1";
         $res = $this->con->consulta_valor($sql);
         return ($res);
 

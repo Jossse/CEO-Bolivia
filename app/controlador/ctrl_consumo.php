@@ -18,7 +18,17 @@
         }
 
         public function listardeudores(){
-            $res=$this->obj->listarpagados();
+            $res=$this->obj->listardeudores();
+            return($res);
+        }
+
+        public function listarcuotasmes(){
+            $res=$this->obj->listarcuotasmes();
+            return($res);
+        }
+
+        public function listarpendientes(){
+            $res=$this->obj->listarpendientes();
             return($res);
         }
 

@@ -34,6 +34,7 @@
             return ($res);
         }
 
+
         public function eliminar()
         {
             $sql = "delete periodos where IdPeriodo='$this->IdPeriodo'";

@@ -48,9 +48,26 @@ class mdl_consumo
         return ($res);
     }
 
+    public function listarcuotasmes()
+    {
+        $sql = "SELECT Consumos.IdPeriodo, sum(Periodos.Tarifa) as SubTotal
+                FROM Consumos INNER JOIN Periodos ON Consumos.IdPeriodo = Periodos.IdPeriodo
+        WHERE (RIGHT(Consumos.IdPeriodo, 2) = 21) and Consumos.Cancelado=1
+        group by Consumos.IdPeriodo";
+        $res = $this->con->consulta_valor($sql);
+        return ($res);
+    }
+
+    public function listarpendientes()
+    {
+        $sql = "select * from consumos WHERE (Consumos.Cancelado=0 and Consumos.IdPeriodo = left(lower(DATENAME(month, GetDate())),3)+format(GetDate(),'yy'))";
+        $res = $this->con->consulta_valor($sql);
+        return ($res);
+    }
+
     public function listardeudores()
     {
-        $sql = "SELECT Consumos.Cuenta, Socios.ApellidosNombres, COUNT(Periodos.IdPeriodo) AS Numero_de_meses, SUM(Periodos.Tarifa) AS Total_Acumulado
+        $sql = "SELECT TOP 1 Consumos.Cuenta, Socios.ApellidosNombres, COUNT(Periodos.IdPeriodo) AS Numero_de_meses, SUM(Periodos.Tarifa) AS Total_Acumulado
         FROM Consumos INNER JOIN
              Periodos ON Consumos.IdPeriodo = Periodos.IdPeriodo INNER JOIN
              Socios ON Consumos.Cuenta = Socios.Cuenta

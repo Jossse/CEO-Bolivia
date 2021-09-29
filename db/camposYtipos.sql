@@ -18,22 +18,21 @@ WHERE TABLE_NAME = 'Empleados'
 --F7 rowcount
 --Ctrl+shift+m templates CTRL+ALT+T
 --mostrar resultados de abajo ctrl+R
---CTRL+SHIFT+U	Cambiar texto a mayúsculas
---CTRL+SHIFT+L	Cambiar texto a minúsculas
+--CTRL+SHIFT+U	Cambiar texto a mayï¿½sculas
+--CTRL+SHIFT+L	Cambiar texto a minï¿½sculas
 --CTRL+K+C	Comentar el texto seleccionado
 --CTRL+K+U	Descomentar el texto seleccionado
 
 --(8) SELECT (9) DISTINCT (11) <TOP quantidade> <lista de campos de retorno>
 -- (1) FROM <tabela>
--- (3) <tipo de junção> JOIN <tabela> ON (2) <condições da junção>
--- (4) WHERE <condições where >
+-- (3) <tipo de junï¿½ï¿½o> JOIN <tabela> ON (2) <condiï¿½ï¿½es da junï¿½ï¿½o>
+-- (4) WHERE <condiï¿½ï¿½es where >
 -- (5) GROUP BY <lista de agrupamento>
 -- (6) WITH {CUBE | ROLLUP}
--- (7) HAVING <condições having>
+-- (7) HAVING <condiï¿½ï¿½es having>
 --(10) ORDER BY <lista de campos>
 
 UPDATE       Consumos
 SET                Cancelado = 0
-FROM            Consumos INNER JOIN
-                         Periodos ON Consumos.IdPeriodo = Periodos.IdPeriodo
-WHERE        (Periodos.IdPeriodo = N'sep21')
+FROM            Consumos 
+WHERE        (Consumos.IdPeriodo = N'sep21')

@@ -33,6 +33,9 @@ if (isset($_SESSION['usuario'])){
         require_once("../controlador/ctrl_consumo.php");
         $obj_ctrlC=new ctrl_consumo();
         $respC=$obj_ctrlC->listarpagados();
+
+        //$obj_ctrlCD=new ctrl_consumo();
+        $respCD=$obj_ctrlC->listardeudores()
     ?>
 <div id="wrapper">
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
@@ -127,7 +130,7 @@ if (isset($_SESSION['usuario'])){
                                                 $rows = $resp->fetchAll();
                                                 echo "<td>" . count($rows) . "</td>";
                                             ?>
-                                            SOCIOS VIGENTES: <strong>$ <span id="daily_revenue">0</span></strong>
+                                            SOCIOS REGISTRADOS: <strong>$ <span id="daily_revenue">0</span></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -146,10 +149,13 @@ if (isset($_SESSION['usuario'])){
                                     <div class="card">
                                         <div class="card-body text-white bg-warning">
                                             <?php
-                                                $rows = $resp->fetchAll();
-                                                echo "<td>" . count($rows) . "</td>";
+                                                $rows = $respCD->fetchAll();
+                                                foreach ($rows as $row ) {
+                                                echo "<td>".$row["Cuenta"]."</td>";
+                                                echo "<td>".$row["ApellidosNombres"]."</td>";
+                                                }
                                             ?>
-                                            SOCIOS VIGENTES: <strong>$ <span id="daily_revenue">0</span></strong>
+                                            SOCIOS DEUDORES: <strong>$ <span id="daily_revenue">0</span></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +166,7 @@ if (isset($_SESSION['usuario'])){
                                                 $rows = $resp->fetchAll();
                                                 echo "<td>" . count($rows) . "</td>";
                                             ?>
-                                            SOCIOS VIGENTES: <strong>$ <span id="daily_revenue">0</span></strong>
+                                            Dato1: <strong>$ <span id="daily_revenue">0</span></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +177,7 @@ if (isset($_SESSION['usuario'])){
                                                 $rows = $resp->fetchAll();
                                                 echo "<td>" . count($rows) . "</td>";
                                             ?>
-                                            SOCIOS VIGENTES: <strong>$ <span id="daily_revenue">0</span></strong>
+                                            Datos2: <strong>$ <span id="daily_revenue">0</span></strong>
                                         </div>
                                     </div>
                                 </div>

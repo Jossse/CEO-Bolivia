@@ -17,6 +17,11 @@
             return($res);
         }
 
+        public function listardeudores(){
+            $res=$this->obj->listarpagados();
+            return($res);
+        }
+
         public function eliminar(){
             $dato=$_GET["var"];
             $this->obj->set("IdConsumo",$dato);

@@ -17,14 +17,15 @@
         <link rel="stylesheet" href="../../public/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="../../public/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="../../public/js/plugins/select2/css/select2.css">
 
     </head>
 
 <body id="page-top">
     <?php
-        require_once("../controlador/ctrl_consumo.php");
-        $obj_ctrl=new ctrl_consumo();
-        $resp=$obj_ctrl->listar();
+        require_once("../controlador/ctrl_cobros.php");
+        $obj_ctrl=new ctrl_cobros();
+        $resp=$obj_ctrl->listarSocios();
     ?>
 <div id="wrapper">
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
@@ -75,57 +76,76 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">COBROS</h3>
-                            <button type="button" class="btn btn-alt-primary" id="btnnuevo">
-                                Nuevo <i class="fa fa-newspaper-o ml-5"></i>
-                            </button>
+
                         </div>
-                        <div class="block-content block-content-full">
-                            <table id="consumo_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
-                                <thead>
-                                <tr>
-                                    <th style="width: 10%;">IdConsumo</th>
-                                    <th style="width: 10%;">Cuenta</th>
-                                    <th style="width: 10%;">IdPeriodo</th>
-                                    <th style="width: 10%;">Cancelado</th>
-                                    <th style="width: 10%;">FechaPago</th>
-                                    <th style="width: 10%;">CIEmpleado</th>
-                                    <th class="text-center" style="width: 10%;"></th>
-                                    <th class="text-center" style="width: 10%;"></th>
-                                    
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                 $rows = $resp->fetchAll();
-                                 foreach ($rows as $row ) {
-                                
-                                    $IdConsumo = $row["IdConsumo"];
-                                    $Cuenta = $row["Cuenta"];
-                                    $IdPeriodo = $row["IdPeriodo"];
-                                    $Cancelado = $row["Cancelado"];
-                                    $FechaPago = $row["FechaPago"];
-                                    $CIEmpleado = $row["CIEmpleado"];
-
-                                    echo "<tr>";
-                                    echo "<td>".$IdConsumo."</td>";
-                                    echo "<td>".$Cuenta."</td>";
-                                    echo "<td>".$IdPeriodo."</td>";
-                                    echo "<td>".$Cancelado."</td>";
-                                    echo "<td>".$FechaPago."</td>";
-                                    echo "<td>".$CIEmpleado."</td>";
-
-                                    echo "<td><a class='btn btn-default' aria-label='Left Align' href='../controlador/ctrl_consumo.php?var=".$IdConsumo."'>
-                                              <span class=\"fa fa-trash\" aria-hidden='true'></span>
-                                            </a></td>";
-                                    echo "<td><button type='button'  class='btn btn-default'  id='btnModificar'  aria-label='Left Align'>
-                                              <span class='fa fa-pencil' aria-hidden='true'></span>
-                                            </button></td>";
-
-                                    echo "</tr>";
-                                }
-                                ?>
-                                </tbody>
-                            </table>
+                        <div tabindex="-1" role="dialog" aria-hidden="true" style="text-align: center;margin-top: 3%">
+                            <label for="Cuentas">Cuentas</label>
+                            <select class='js-example-responsive' id='Cuentas' name='Cuentas'>
+                                <option selected></option>
+                            <?php
+                            $rows = $resp->fetchAll();
+                            foreach ($rows as $row) {
+                                $Cuenta = $row["Cuenta"];
+                                $Cuentas = $row["Cuentas"];
+                                echo "<option value='" . $Cuenta . "'>" . $Cuentas . "</option>";
+                            }
+                            ?>
+                            </select>
+                        </div>
+                        <div class="container" >
+                            <div class="row" style="margin-top: 3%">
+                                <div class="col">
+                                    <label class="col-12" for="ApellidosNombres">Nombre</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="ApellidosNombres" name="ApellidosNombres"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="col-12" for="CI">CI</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="CI" name="CI"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="col-12" for="Direccion">Direcci&oacute;n</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="Direccion" name="Direccion"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 3%">
+                                <div class="col">
+                                    <label class="col-12" for="IdPeriodo">Periodo</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="IdPeriodo" name="IdPeriodo"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="col-12" for="FechaInicio">Fecha Inicio</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="FechaInicio" name="FechaInicio"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="col-12" for="FechaFinal">Fecha Final</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="FechaFinal" name="FechaFinal"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="col-12" for="Tarifa">Tarifa</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="Tarifa" name="Tarifa"
+                                               placeholder="" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,6 +217,7 @@
 </div>
 <script type="text/javascript" src="../../public/js/jquery.js"></script>
 <script src="../../public/js/plugins/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../../public/js/plugins/select2/js/select2.min.js"></script>
 <script src="../../public/bootstrap/js/bootstrap.min.js"></script>
 <script src="../../public/js/theme.js"></script>
 <script type="text/javascript" src="../../public/js/moment.js"></script>
@@ -204,6 +225,7 @@
 <script src="../../public/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript" src="../../public/js/main.js"></script>
+<script type="text/javascript" src="../../public/js/solicitudes.js"></script>
 </body>
 
 </html>

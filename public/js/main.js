@@ -112,6 +112,10 @@ $(document).ready( function () {
         },
     });
 
+    $('.js-example-responsive').select2({
+        width : '30%',
+        theme: "classic"
+    });
 } );
 
 $(document).on("click","#btnnuevo", function(){
@@ -130,7 +134,6 @@ $(document).on("click","#btnModificar", function(){
     Direccion = $(this).parents("tr").find("td").eq(2).html();
     Celular = $(this).parents("tr").find("td").eq(3).html();
     Cargo = $(this).parents("tr").find("td").eq(4).html();
-    console.log(Cargo);
     Pass = $(this).parents("tr").find("td").eq(5).html();
     Fecha = $(this).parents("tr").find("td").eq(6).html();
     var date = Fecha.split(" ")[0];
@@ -261,6 +264,7 @@ $("#cerrarModal").click(function(){
     });
 
 
-        $('#sidebarToggle').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
+$('#sidebarToggle').on('click', function () {
+    $('#sidebar').toggleClass('active');
+});
+

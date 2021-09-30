@@ -76,7 +76,7 @@ if (isset($_SESSION['login']['usuario'])){
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item"><a class="nav-link active" href="vst_main.php"><i class="fa fa-home"></i><span>INICIO</span></a></li>
-                <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-money"></i><span>COBROS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_cobros.php"><i class="fa fa-money"></i><span>COBROS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_consumos.php"><i class="fas fa-tachometer-alt"></i><span>CONSUMOS</span></a></li>
                 <li class="nav-item" id="btn_periodo"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                 <li class="nav-item" id="btn_socio"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>

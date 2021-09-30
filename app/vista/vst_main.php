@@ -2,11 +2,9 @@
 <?php
 session_start();
 if (isset($_SESSION['login']['usuario'])){
-
 ?>
 
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -19,6 +17,52 @@ if (isset($_SESSION['login']['usuario'])){
     <link rel="stylesheet" href="../../public/fonts/fontawesome5-overrides.min.css">
     <script type="text/javascript" src="../../public/js/jquery.js"></script>
     <!-- <script type="text/javascript" src="../../public/chart.js/Chart.js"></script> -->
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+            // var my_2d=json_encode($data);    
+            // Create the data table.
+            var data = new google.visualization.arrayToDataTable([
+            ['IdPeriodo','SubTotal'],
+            <?php
+                require_once("../controlador/ctrl_consumo.php");
+                $obj_ctrl=new ctrl_consumo();
+                $resplcm=$obj_ctrl->listarcuotasmes();
+                $rows = $resplcm->fetchAll();
+                $data = array();
+                foreach ($rows as $row ) {
+                    $data[] = $row;
+                }
+                $rows = $data;
+                foreach ($rows as $row ) {
+                    echo "['".$row['IdPeriodo']."',".$row['SubTotal']."],";
+                    // $data[] = $row;
+                }
+            ?>
+            ]);
+           
+            // Set chart options
+            var options = {
+                // 'title':'Acumulaciones por mes',
+                // 'width':400,
+                // 'height':300};
+            }
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -32,9 +76,7 @@ if (isset($_SESSION['login']['usuario'])){
         $obj_ctrlE=new ctrl_empleado();
         $respE=$obj_ctrlE->listar();
 
-        require_once("../controlador/ctrl_consumo.php");
-        $obj_ctrl=new ctrl_consumo();
-        $resplcm=$obj_ctrl->listarcuotasmes();
+        
 
         require_once("../controlador/ctrl_consumo.php");
         $obj_ctrlC=new ctrl_consumo();
@@ -182,73 +224,63 @@ if (isset($_SESSION['login']['usuario'])){
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <div class="card">
-                                        <div class="card-body text-white bg-info">
-                                            <?php
-                                                $rows = $resp->fetchAll();
-                                                echo "<td>" . count($rows) . "</td>";
-                                            ?>
-                                            Dato1: <strong>$ <span id="daily_revenue">0</span></strong>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-sm-2">
                                     <div class="card">
                                         <div class="card-body text-white bg-dark">
-                                            <?php
-                                                $rows = $resp->fetchAll();
-                                                echo "<td>" . count($rows) . "</td>";
-                                            ?>
-                                            Datos2: <strong>$ <span id="daily_revenue">0</span></strong>
+                                        <!-- <div id="chart_div"></div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         <!-- </div> -->
                         <div>
-                        
-                        <?php
-                            $rows = $resplcm->fetchAll();
-                            // foreach ($rows as $row ) {
                             
-                            // echo "<td>".$row["IdPeriodo"]." </td>";
-                            // echo "<td>".$row["SubTotal"]." </td><br>";
-                            // }
-                            // print_r($rows);
-                            echo "<script>
-                            var my_2d=".json_encode($rows)."
-                            </script>";
-
-                        ?>
-                        <div id='chart_div'></div>
-                        <script type="text/javascript"
-                            src="https://www.gstatic.com/charts/loader.js"></script>
+                            <?php
+                                $rows = $resplcm->fetchAll();
+                                // foreach ($rows as $row ) {
+                                
+                                // echo "<td>".$row["IdPeriodo"]." </td>";
+                                // echo "<td>".$row["SubTotal"]." </td><br>";
+                                // }
+                                // print_r($rows);
+                                echo "<script>
+                                var my_2d=".json_encode($rows)."
+                                </script>";
+                            ?>
+                           
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                             <script type="text/javascript">
-                            google.charts.load('current',{packages:['corechart']})
-                            google.charts.setOnLoadCallback(draw_my_chart)
-
-                            function draw_my_chart(){
-                                var data=new google.visualization.DataTable();
-                                data.addColumn('string','IdPeriodo'); 
-                                data.addColumn('number','SubTotal');
-                                for(i=0; i<my_2.length; i++)
-                                data.addRow([my_2d[i][0],parseInt(my_2d[i][1])]);
-                                var options={
-                                title:'Valor acumulado al mes',
-                                hAxis:{title: 'Periodo', titleTextStyle: {color:'#333'}},
-                                vAxis:{minValue:0},
-                                width:500,
-                                height:400
-                                };
-                                var chart=new google.visualization.AreaChart(document.getElementById('chart_div'));
-                                chart.draw_my_chart(data,options);
-                            }
-                        </script>
-
+                                google.charts.load('current', {'packages':['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart(){
+                                    var data=new google.visualization.DataTable();
+                                    data.addColumn('string','IdPeriodo'); 
+                                    data.addColumn('number','SubTotal');
+                                    // data.addRows([
+                                    //     ['Mushrooms', 3],
+                                    //     ['Onions', 1],
+                                    //     ['Olives', 1],
+                                    //     ['Zucchini', 1],
+                                    //     ['Pepperoni', 2]
+                                    // ]);
+                                    for(i=0; i<my_2.length; i++)
+                                        data.addRow([my_2d[i][0],parseInt(my_2d[i][1])]);
+                                    var options={
+                                    title:'Valor acumulado al mes',
+                                    hAxis:{title: 'Periodo', titleTextStyle: {color:'#333'}},
+                                    vAxis:{minValue:0},
+                                    width:500,
+                                    height:400
+                                    };
+                                    var chart=new google.visualization.LineChart(document.getElementById('chart_div1'));
+                                    chart.chart(data,options);
+                                }
+                            </script>
                         </div>
+                        
                     </div>
-                    
+                    <div id="chart_div"></div>
                 </div>
 
             </main>

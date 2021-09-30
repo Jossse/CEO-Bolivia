@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (isset($_SESSION['usuario'])){
+if (isset($_SESSION['login']['usuario'])){
     header("location: vst_main.php");
 }
 include '../config/user.php';

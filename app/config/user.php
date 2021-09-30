@@ -1,23 +1,16 @@
 <?php
-
 include 'conexion.php';
-
 class User extends conexion
 {
     private $nombre;
     private $username;
-
     public function getUser($username, $password)
     {
         $sql = "SELECT * FROM empleados WHERE Apellidos_Nombres = '$username' AND Clave = '$password'";
-
-        $result = $this->connect()->query($sql,PDO::FETCH_ASSOC);
-
-        $fila = $result->fetch(PDO::FETCH_ASSOC);
-        // $numRows = $result->num_rows;
-
-        if ($result == 1){
-            return $fila;
+        $result = $this->connect()->query($sql);
+        $numRows = $result->fetch(PDO::FETCH_ASSOC);
+        if ($result){
+            return $numRows;
         }else{
             return false;
         }

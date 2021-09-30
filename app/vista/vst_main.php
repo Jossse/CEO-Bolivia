@@ -117,8 +117,10 @@ if (isset($_SESSION['login']['usuario'])){
                             <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                                                        aria-expanded="false" data-bs-toggle="dropdown"
                                                                        href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['login']['usuario']?> </span><img class="border rounded-circle img-profile"
+                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['login']['cargo'].' '.$_SESSION['login']['usuario']?> </span><img class="border rounded-circle img-profile"
                                                                           src="../../public/img/avatar5.jpeg"></a>
+                                            <a><?php echo $_SESSION['login']['cargo']?> </a>
+                                                                          
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href=""><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Cuenta</a><a

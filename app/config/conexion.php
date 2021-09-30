@@ -35,12 +35,12 @@ class conexion{
         }
         catch ( PDOException $e )
         {
-            echo "Drivers disponiveis: " . implode( ",", PDO::getAvailableDrivers() );
+            echo "Drivers no disnibles: " . implode( ",", PDO::getAvailableDrivers() );
             echo "\nErro: " . $e->getMessage();
             exit;
         }
         if( $con ) {
-            // echo "Connection established.";
+            // echo "Conexion establecidad con exito!!.";
         }
         else{
             // echo "ERROR NO SE PUDO CONECTAR!!!";

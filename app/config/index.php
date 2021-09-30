@@ -9,7 +9,7 @@
         }else{
             $user = new User();
             $datos = $user->getUser($username,$password);
-            if (count($datos) > 0){
+            if ($datos){
                 session_start();
                 $_SESSION['login']['usuario'] = $username;
                 $_SESSION['login']['ci'] = $datos['CI'];

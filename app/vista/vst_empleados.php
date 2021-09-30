@@ -100,6 +100,7 @@ $resp = $obj_ctrl->listar();
 <?php
     if ($_SESSION['login']['cargo'] == 'administrador'){
 ?>
+            
             <!--Contenido -->
             <main id="main-container">
                 <div class="content">

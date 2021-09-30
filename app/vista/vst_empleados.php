@@ -9,6 +9,7 @@ if (isset($_SESSION['login']['usuario'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>EMPLEADOS - SISRECOCOAP</title>
+    <link rel="shortcut icon" href="../../public/img/blue-water.png">
     <meta name="description" content="SISRECOCOAP">
     <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/js/plugins/datatables/dataTables.bootstrap4.min.css">

@@ -9,6 +9,7 @@ if (isset($_SESSION['login']['usuario'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>INICIO DE SESION - SISRECOCOAP</title>
+    <link rel="shortcut icon" href="../../public/img/blue-water.png">
     <meta name="description" content="SISRECOCOAP">
     <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
@@ -207,7 +208,13 @@ if (isset($_SESSION['login']['usuario'])){
                                     </div>
                                 </div>
 
-                               
+                                <div class="col-sm-2">
+                                    <div class="card">
+                                        <div class="card-body text-white bg-dark">
+                                        <!-- <div id="chart_div"></div> -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         <!-- </div> -->
                         <div>

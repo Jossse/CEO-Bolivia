@@ -1,4 +1,4 @@
 Hiver Tapia Domínguez hiver.tapia@uab.edu.bo
 git config --global user.email "hiver.tapia@uab.edu.bo"
 git config --global user.name "tapiaht"
-
+git config --global user.name "grover.ramirez@uab.edu.bo"

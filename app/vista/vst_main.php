@@ -16,23 +16,12 @@ if (isset($_SESSION['login']['usuario'])){
     <link rel="stylesheet" href="../../public/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../../public/fonts/fontawesome5-overrides.min.css">
     <script type="text/javascript" src="../../public/js/jquery.js"></script>
-    <!-- <script type="text/javascript" src="../../public/chart.js/Chart.js"></script> -->
-    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         
-        // Load the Visualization API and the corechart package.
         google.charts.load('current', {'packages':['corechart']});
-
-        // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawChart);
-
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
         function drawChart() {
-            // var my_2d=json_encode($data);    
-            // Create the data table.
             var data = new google.visualization.arrayToDataTable([
             ['IdPeriodo','SubTotal'],
             <?php
@@ -47,18 +36,13 @@ if (isset($_SESSION['login']['usuario'])){
                 $rows = $data;
                 foreach ($rows as $row ) {
                     echo "['".$row['IdPeriodo']."',".$row['SubTotal']."],";
-                    // $data[] = $row;
                 }
             ?>
             ]);
            
-            // Set chart options
             var options = {
-                // 'title':'Acumulaciones por mes',
-                // 'width':400,
-                // 'height':300};
+                
             }
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }

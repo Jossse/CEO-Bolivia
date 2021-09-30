@@ -59,9 +59,6 @@ if (isset($_SESSION['login']['usuario'])){
         require_once("../controlador/ctrl_empleado.php");
         $obj_ctrlE=new ctrl_empleado();
         $respE=$obj_ctrlE->listar();
-
-        
-
         require_once("../controlador/ctrl_consumo.php");
         $obj_ctrlC=new ctrl_consumo();
         $respC=$obj_ctrlC->listarpagados();
@@ -119,7 +116,6 @@ if (isset($_SESSION['login']['usuario'])){
                                                                        href="#"><span
                                             class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo 'Bienvenid@: '.$_SESSION['login']['cargo'].' '.$_SESSION['login']['usuario']?> </span><img class="border rounded-circle img-profile"
                                                                           src="../../public/img/avatar5.jpeg"></a>
-                                            <a><?php echo $_SESSION['login']['cargo']?> </a>
                                                                           
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href=""><i

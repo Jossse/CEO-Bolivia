@@ -70,7 +70,9 @@
                         </ul>
                     </div>
                 </nav>
-
+                <?php
+    if ($_SESSION['login']['cargo'] == 'administrador'){
+?>
                 <!--Contenido -->
                 <main id="main-container">
                     <div class="content">
@@ -171,6 +173,11 @@
                     </div>
                 </div>
             </div>
+            <?php
+            }else{
+                echo '<div class="alert alert-danger">Sector solo para Administrador</div>';
+            }
+        ?>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © SISRECOCOAP 2021</span></div>

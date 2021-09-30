@@ -29,7 +29,7 @@
 
         public function listar()
         {
-            $sql = "select * from periodos";
+            $sql = "select * from periodos ORDER BY FechaInicio asc";
             $res = $this->con->consulta_valor($sql);
             return ($res);
         }

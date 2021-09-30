@@ -93,7 +93,7 @@
                             </select>
                         </div>
                         <div class="container" >
-                            <div class="row" style="margin-top: 3%">
+                            <div class="row" style="margin-top: 5%">
                                 <div class="col">
                                     <label class="col-12" for="ApellidosNombres">Nombre</label>
                                     <div class="col-md-12">
@@ -144,6 +144,11 @@
                                         <input type="text" class="form-control" id="Tarifa" name="Tarifa"
                                                placeholder="" required>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 7%">
+                                <div class="col">
+                                    <button class="btn btn-primary d-block btn-user w-100" type="submit" id="submitCobro" style="width: 20%!important; margin: 0 auto">Cobrar</button>
                                 </div>
                             </div>
                         </div>

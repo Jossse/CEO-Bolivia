@@ -23,22 +23,9 @@ class mdl_cobros
 
     public function listarSocios()
     {
-        $sql = "SELECT Cuenta, CONCAT(Cuenta, ' - ', ApellidosNombres) AS Cuentas FROM Socios WHERE Activo = 1";
+        $sql = "SELECT S.Cuenta, CONCAT(S.Cuenta, ' - ', S.ApellidosNombres) AS Cuentas FROM Socios S INNER JOIN Consumos C ON S.Cuenta = C.Cuenta WHERE S.Activo = 1 AND C.Cancelado = 0  ";
         $res = $this->con->consulta_valor($sql);
         return ($res);
     }
-
-    public function Cobros()
-    {
-        $sql = "SELECT S.ApellidosNombres, S.CI, S.Direccion, P.IdPeriodo, P.FechaInicio, P.FechaFinal, P.Tarifa
-                FROM Socios S
-                INNER JOIN Consumos C ON S.Cuenta = C.Cuenta
-                INNER JOIN Periodos P ON C.IdPeriodo = P.IdPeriodo
-                WHERE P.IdPeriodo = 'sep21' AND C.Cancelado = 0";
-        $res = $this->con->consulta_valor($sql);
-        return ($res);
-    }
-
-
 }
 

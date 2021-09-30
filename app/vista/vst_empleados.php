@@ -50,6 +50,7 @@ $resp = $obj_ctrl->listar();
                                 class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link active" href="vst_empleados.php"><i
                                 class="fa fa-users"></i><span>EMPLEADOS</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="vst_reportecomensual.php"><i class="fa fa-newspaper-o"></i><span>REPORTES</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>

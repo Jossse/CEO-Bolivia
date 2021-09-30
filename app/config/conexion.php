@@ -26,7 +26,7 @@ class conexion{
         // $con = new PDO('mysql:host=localhost;dbname=sisrecocoap','root','');
         
         
-        $serverName = "NP270\SQLExpress";
+        $serverName = "DESKTOP-KM93IFJ";
         $userName = "";
         $userPassword = "";
         $dbName = "sisrecocoap";

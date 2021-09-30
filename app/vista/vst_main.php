@@ -208,13 +208,6 @@ if (isset($_SESSION['login']['usuario'])){
                                     </div>
                                 </div>
 
-                                <div class="col-sm-2">
-                                    <div class="card">
-                                        <div class="card-body text-white bg-dark">
-                                        <!-- <div id="chart_div"></div> -->
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         <!-- </div> -->
                         <div>

@@ -41,7 +41,7 @@ function Footer()
 }
 // require_once("../vista/vst_reportecomensual.php");
 // require("../config/conexion.php");
-$con = new PDO("sqlsrv:server=NP270\SQLExpress; Database = sisrecocoap", "", "");
+$con = new PDO("sqlsrv:server=DESKTOP-KM93IFJ; Database = sisrecocoap", "", "");
 
 // $con=new conexion();
 $sql = "select * from socios where Activo=1 ORDER BY ApellidosNombres ASC";

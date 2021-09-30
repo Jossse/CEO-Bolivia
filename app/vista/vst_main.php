@@ -81,7 +81,7 @@ if (isset($_SESSION['login']['usuario'])){
                 <li class="nav-item" id="btn_periodo"><a class="nav-link" href="vst_periodos.php"><i class="fa fa-pencil-square"></i><span>PERIODOS</span></a></li>
                 <li class="nav-item" id="btn_socio"><a class="nav-link" href="vst_socios.php"><i class="fa fa-user"></i><span>SOCIOS</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="vst_empleados.php"><i class="fa fa-users"></i><span>EMPLEADOS</span></a>
-                
+                <li class="nav-item"><a class="nav-link" href="vst_reportecomensual.php"><i class="fa fa-newspaper-o"></i><span>REPORTES</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
@@ -207,13 +207,7 @@ if (isset($_SESSION['login']['usuario'])){
                                     </div>
                                 </div>
 
-                                <div class="col-sm-2">
-                                    <div class="card">
-                                        <div class="card-body text-white bg-dark">
-                                        <!-- <div id="chart_div"></div> -->
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         <!-- </div> -->
                         <div>
